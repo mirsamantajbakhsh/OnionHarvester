@@ -18,6 +18,12 @@ public class OH {
     private static Vector<String> onions = new Vector<>(1000);
     private static int counter = 0;
     private static String startOnion = "aaaaaaaaaaaaaaaa";
+    
+    private static String IP = "127.0.0.1";
+    private static int Port = 9150;
+    private static int ThreadCount = 10;
+    private static int TimeOut = 5000;
+    
 
     private static FileWriter fw;
 
@@ -56,9 +62,27 @@ public class OH {
     }
 
     public static void main(String[] args) {
-        if (args.length == 1) {
-            startOnion = args[0];
+        
+        for (int i = 0; i < args.length; i++) {
+            switch (args[i].toLowerCase()) {
+                case "--ip":
+                    IP = args[++i];
+                    break;
+                case "--port":
+                    Port = Integer.parseInt(args[++i]);
+                    break;
+                case "--start":
+                    startOnion = args[++i];
+                    break;
+                case "--thread":
+                    ThreadCount = Integer.parseInt(args[++i]);
+                    break;
+                case "--time-out":
+                    TimeOut = Integer.parseInt(args[++i]);
+                    break;
+            }
         }
+        
         new OH();
     }
 
@@ -87,7 +111,7 @@ public class OH {
             }
         });
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < ThreadCount; i++) {
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
@@ -105,13 +129,13 @@ public class OH {
                 }
 
                 private boolean checkAddress(String onion, int p) {
-                    InetSocketAddress HiddenerProxyAddress = new InetSocketAddress("127.0.0.1", 9150);
+                    InetSocketAddress HiddenerProxyAddress = new InetSocketAddress(IP, Port);
                     Proxy HiddenProxy = new Proxy(Proxy.Type.SOCKS, HiddenerProxyAddress);
                     Socket underlying = new Socket(HiddenProxy);
                     InetSocketAddress unresolvedAdr = InetSocketAddress.createUnresolved(onion, p);
 
                     try {
-                        underlying.connect(unresolvedAdr, 5000);
+                        underlying.connect(unresolvedAdr, TimeOut);
                         //System.out.println(onion + ":" + p + " is OK.");
                         return true;
                     } catch (Exception ex) {
@@ -119,6 +143,40 @@ public class OH {
                         return false;
                     }
                 }
+
+                /*
+                private SSLSocketFactory trustAllCerts() {
+                    TrustManager[] trustAllCerts = new TrustManager[]{
+                        new X509TrustManager() {
+                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                                return new X509Certificate[0];
+                            }
+
+                            public void checkClientTrusted(
+                                    java.security.cert.X509Certificate[] certs, String authType) {
+                            }
+
+                            public void checkServerTrusted(
+                                    java.security.cert.X509Certificate[] certs, String authType) {
+                            }
+                        }
+                    };
+
+                    SSLContext ssc = null;
+                    SSLSocketFactory ssf = null;
+                    try {
+                        ssc = SSLContext.getInstance("SSL");
+                        ssc.init(null, trustAllCerts, new java.security.SecureRandom());
+                        ssf = ssc.getSocketFactory();
+                        return ssf;
+                    } catch (KeyManagementException ex) {
+
+                    } catch (NoSuchAlgorithmException ex) {
+
+                    }
+                    return null;
+                }
+                */
             };
             new Thread(r).start();
         }
