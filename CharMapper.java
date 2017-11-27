@@ -37,17 +37,19 @@ public class CharMapper {
         nextToken.put("w", "x");
         nextToken.put("x", "y");
         nextToken.put("y", "z");
-        nextToken.put("z", "0");
-        nextToken.put("0", "1");
-        nextToken.put("1", "2");
+        //nextToken.put("z", "0");
+        //nextToken.put("0", "1");
+        //nextToken.put("1", "2");
+        nextToken.put("z", "2");
         nextToken.put("2", "3");
         nextToken.put("3", "4");
         nextToken.put("4", "5");
         nextToken.put("5", "6");
         nextToken.put("6", "7");
-        nextToken.put("7", "8");
-        nextToken.put("8", "9");
-        nextToken.put("9", "a");
+        nextToken.put("7", "a");
+        //nextToken.put("7", "8");
+        //nextToken.put("8", "9");
+        //nextToken.put("9", "a");
     }
 
     public static String getNextToken(String currentToken) {
