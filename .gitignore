@@ -1,0 +1,12 @@
+# Compiled python files
+*.pyc
+
+#pyCharm settings
+.idea/*
+
+#setup
+build/*
+*egg-info*
+
+#tmp files
+*.py~
