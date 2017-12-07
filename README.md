@@ -27,3 +27,6 @@ If you did not set the switched, you can use the Onion Harvester with its defaul
 If you want to help in harvesting, contact me at saman \[@\] mstajbakhsh \[.\] ir
 
 [Onion Harvester]: <https://mstajbakhsh.ir/onion-harvester-first-step-tor-search-engines>
+
+# Python Version
+You may check the python version [readme file](https://github.com/Ali-Razmjoo/OnionHarvester/blob/master/python_version_readme.md) to use the Python version based on [OWASP Nettacker](https://github.com/viraintel/OWASP-Nettacker) module.
