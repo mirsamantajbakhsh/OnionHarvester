@@ -29,4 +29,4 @@ If you want to help in harvesting, contact me at saman \[@\] mstajbakhsh \[.\] i
 [Onion Harvester]: <https://mstajbakhsh.ir/onion-harvester-first-step-tor-search-engines>
 
 # Python Version
-You may check the python version [readme file](https://github.com/Ali-Razmjoo/OnionHarvester/blob/master/python_version_readme.md) to use the Python version based on [OWASP Nettacker](https://github.com/viraintel/OWASP-Nettacker) module.
+You may check the python version [readme file](https://github.com/mirsamantajbakhsh/OnionHarvester/blob/master/python_version_readme.md) to use the Python version based on [OWASP Nettacker](https://github.com/viraintel/OWASP-Nettacker) module.
