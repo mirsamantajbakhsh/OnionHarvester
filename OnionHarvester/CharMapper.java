@@ -58,7 +58,7 @@ public class CharMapper {
         String lastChar = currentToken.substring(position);
         res += nextToken.get(lastChar);
 
-        while (lastChar.equalsIgnoreCase("9") && position > 0) { //Has carry
+        while (lastChar.equalsIgnoreCase("7") && position > 0) { //Has carry
             lastChar = res.substring(--position, position + 1);
             res = replace(res, position, nextToken.get(lastChar).charAt(0));
         }
