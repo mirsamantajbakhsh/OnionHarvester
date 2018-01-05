@@ -20,7 +20,6 @@ If you did not set the switched, you can use the Onion Harvester with its defaul
 | ------ | ------ |
 | --ip | 127.0.0.1 |
 | --port | 9150 |
-| --start | aaaaaaaaaaaaaaaa |
 | --thread | 10 |
 | --time-out | 5000 (5 seconds) |
 
