@@ -187,7 +187,6 @@ public class OH {
 
         while (!(onion = calculateNextOnion(onion)).equalsIgnoreCase(endOnion)) {
             onions.add(onion);
-            System.out.println("Onion added: " + onion + "[size: " + onions.size() + "]");
         }
     }
 
