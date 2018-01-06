@@ -64,7 +64,7 @@ public class OH {
     public OH() {
         //Initialization
         Object[] ans = getNewOnions();
-        if (!(boolean)ans[0]) {
+        if (!(boolean) ans[0]) {
             System.out.println("Cannot get the onion addresses. Please check your Internet connection.");
             System.exit(-1);
         }
@@ -132,7 +132,7 @@ public class OH {
             sendResponse(true);
             counter = 0;
             Object[] ans = getNewOnions();
-            if ((boolean)ans[0]) {
+            if ((boolean) ans[0]) {
                 //I should change the value of startOnion here, because of getNextOnion() is synchronized and the value of startOnion cannot be changed in getNewOnions();
                 startOnion = String.valueOf(ans[1]);
                 endOnion = String.valueOf(ans[2]);
@@ -166,6 +166,18 @@ public class OH {
             HttpEntity entity = response.getEntity();
 
             if (entity != null && response.getStatusLine().getStatusCode() == 200) {
+                //Check Answer. It should be "Thanks for contribution."
+                //BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+                //StringBuffer result = new StringBuffer();
+                //String line = "";
+                //while ((line = rd.readLine()) != null) {
+                //    result.append(line);
+                //}
+
+                //String responseStr = result.toString();
+                //System.out.println(responseStr);
+
                 foundAddresses.clear();
                 return true;
             }
@@ -226,7 +238,7 @@ public class OH {
             out.add(true);
             out.add(jobj.getString("start"));
             out.add(jobj.getString("end"));
-            out.add(jobj.getString("ID"));
+            out.add(jobj.getString("id"));
         } catch (Exception ex) {
             out.add(false);
         } finally {
