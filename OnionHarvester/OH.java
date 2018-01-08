@@ -42,6 +42,11 @@ public class OH {
     static Set<Integer> ports = new HashSet<>();
 
     public static void main(String[] args) {
+
+        System.out.println("Welcome to Onion Harvester project.\r\n" +
+                "This project will find all the onions in TOR network.\r\n" +
+                "Check more info:\r\n\t\thttp://onionharvester.com/\r\n\t\thttps://mstajbakhsh.ir/projects/onion-harvester/");
+
         for (int i = 0; i < args.length; i++) {
             switch (args[i].toLowerCase()) {
                 case "--ip":
@@ -157,9 +162,10 @@ public class OH {
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("id", ID));
             final String[] data = {""};
-            foundAddresses.forEach(onionAddress -> data[0] += onionAddress.toString());
+            foundAddresses.forEach(onionAddress -> data[0] += onionAddress.toString() + ",") ;
             if (!data[0].equalsIgnoreCase("")) {
-                params.add(new BasicNameValuePair("addresses", data[0]));
+                data[0] = data[0].substring(0, data[0].length() - 1);
+                params.add(new BasicNameValuePair("addresses", "[" + data[0] + "]"));
             }
             params.add(new BasicNameValuePair("complete", String.valueOf(complete).toLowerCase()));
             httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
