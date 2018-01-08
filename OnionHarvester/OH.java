@@ -63,6 +63,8 @@ public class OH {
 
     public OH() {
         //Initialization
+        getPorts().add(80);
+        getPorts().add(443);
         Object[] ans = getNewOnions();
         if (!(boolean) ans[0]) {
             System.out.println("Cannot get the onion addresses. Please check your Internet connection.");
@@ -100,6 +102,7 @@ public class OH {
                         String tmp = onion + ".onion";
                         for (int p : getPorts()) {
                             if (checkAddress(tmp, p)) {
+                                System.out.println("Address found: " + tmp + ":" + p);
                                 addAlive(tmp, p);
                             }
                         }
