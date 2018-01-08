@@ -157,9 +157,10 @@ public class OH {
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("id", ID));
             final String[] data = {""};
-            foundAddresses.forEach(onionAddress -> data[0] += onionAddress.toString());
+            foundAddresses.forEach(onionAddress -> data[0] += onionAddress.toString() + ",") ;
             if (!data[0].equalsIgnoreCase("")) {
-                params.add(new BasicNameValuePair("addresses", data[0]));
+                data[0] = data[0].substring(0, data[0].length() - 1);
+                params.add(new BasicNameValuePair("addresses", "[" + data[0] + "]"));
             }
             params.add(new BasicNameValuePair("complete", String.valueOf(complete).toLowerCase()));
             httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
