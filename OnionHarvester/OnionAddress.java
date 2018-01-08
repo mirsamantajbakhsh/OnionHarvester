@@ -15,7 +15,7 @@ public class OnionAddress {
 
     public OnionAddress(String onionAddress, int Port) {
         this.onionAddress = onionAddress;
-        this.port = port;
+        this.port = Port;
         this.date = new Date();
     }
 
@@ -33,6 +33,6 @@ public class OnionAddress {
 
     @Override
     public String toString() {
-        return "[\"" + getOnionAddress() + "\"," + getPort() + ",\"" + dateFormat.format(getDate()) + "\"]";
+        return "[\"" + getOnionAddress().substring(0, 16) + "\"," + getPort() + ",\"" + dateFormat.format(getDate()) + "\"]";
     }
 }
