@@ -42,6 +42,11 @@ public class OH {
     static Set<Integer> ports = new HashSet<>();
 
     public static void main(String[] args) {
+
+        System.out.println("Welcome to Onion Harvester project.\r\n" +
+                "This project will find all the onions in TOR network.\r\n" +
+                "Check more info:\r\n\t\thttp://onionharvester.com/\r\n\t\thttps://mstajbakhsh.ir/projects/onion-harvester/");
+
         for (int i = 0; i < args.length; i++) {
             switch (args[i].toLowerCase()) {
                 case "--ip":
